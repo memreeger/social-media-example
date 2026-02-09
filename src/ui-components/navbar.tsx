@@ -7,13 +7,21 @@ export default function Navbar() {
     const navigate = useNavigate();
 
     return (
-        <div className="w-full bg-white shadow p-4 flex justify-between">
-            <div className="font-bold">Social App</div>
+        <div className="w-full bg-white shadow p-4 flex justify-between items-center">
+            <div
+                className="font-bold cursor-pointer"
+                onClick={() => navigate("/")}
+            >
+                Social App
+            </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
                 {!user ? (
                     <>
-                        <Button variant="outline" onClick={() => navigate("/login")}>
+                        <Button
+                            variant="outline"
+                            onClick={() => navigate("/login")}
+                        >
                             Login
                         </Button>
                         <Button onClick={() => navigate("/register")}>
@@ -21,9 +29,21 @@ export default function Navbar() {
                         </Button>
                     </>
                 ) : (
-                    <Button variant="destructive" onClick={() => logout()}>
-                        Logout
-                    </Button>
+                    <>
+                        <Button
+                            variant="outline"
+                            onClick={() => navigate("/me")}
+                        >
+                            Profilim
+                        </Button>
+
+                        <Button
+                            variant="destructive"
+                            onClick={() => logout()}
+                        >
+                            Logout
+                        </Button>
+                    </>
                 )}
             </div>
         </div>

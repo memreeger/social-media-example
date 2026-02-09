@@ -38,8 +38,8 @@ export default function Login() {
                     >
                         Login
                     </Button>
-                    <Button 
-                    className="ml-2 bg-red-300 hover:bg-red-500"
+                    <Button
+                        className="ml-2 bg-red-300 hover:bg-red-500"
                         onClick={() => navigate(-1)}
                     >
                         Geri Dön

@@ -35,14 +35,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/home-page";
 import Login from "./views/login-page";
 import Register from "./views/register-page";
+import UserPage from "./views/user-page";
+import Navbar from "./ui-components/navbar";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/me" element={<UserPage />} />
       </Routes>
     </BrowserRouter>
   );
