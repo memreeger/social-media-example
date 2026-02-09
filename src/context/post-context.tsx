@@ -54,9 +54,7 @@ export const PostProvider = ({ children }: { children: React.ReactNode }) => {
       likes: [],
       comments: [],
     }
-    // yeni post atıldığı zaman ilk sayfaya dön
     setPosts((prev) => [newPost, ...prev])
-    setPage(1)
   }
 
   const toggleLike = (postId: string) => {
@@ -111,7 +109,7 @@ export const PostProvider = ({ children }: { children: React.ReactNode }) => {
   const loadMore = () => {
     if (!user) {
       alert("daha fazlası için lütfen giriş yapın")
-      
+
       return
     }
     if (!hasMore) return

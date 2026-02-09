@@ -13,38 +13,47 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        register(username, email, password);
+        navigate("/");
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <Card className="w-[400px]">
                 <CardHeader>
                     <CardTitle>Register</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                    <Input
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <Input
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button
-                        onClick={() => {
-                            register(username, email, password);
-                            navigate("/");
-                        }}
-                    >
-                        Register
-                    </Button>
-                </CardContent>
+
+                {/* form eklendi */}
+                <form onSubmit={handleSubmit}>
+                    <CardContent className="space-y-3">
+                        <Input
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                        <Input
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <Input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+
+                        <Button type="submit" className="w-full">
+                            Register
+                        </Button>
+                    </CardContent>
+                </form>
             </Card>
         </div>
     );

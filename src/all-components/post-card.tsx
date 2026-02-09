@@ -11,10 +11,11 @@ import {
   CardDescription,
 } from "../components/ui/card"
 import { Button } from "../components/ui/button"
-import { Textarea } from "../components/ui/textarea"
 import { Separator } from "../components/ui/separator"
 import { Avatar, AvatarFallback } from "../components/ui/avatar"
 import { useNavigate } from "react-router-dom"
+import { CommentInput } from "./comment-input"
+import { CommentItem } from "./comment-item"
 
 type PostCardProps = {
   post: Post
@@ -108,62 +109,15 @@ export const PostCard = ({ post }: PostCardProps) => {
             <Separator />
 
             <div className="ml-6 space-y-3">
-              <div className="border rounded p-3 bg-muted">
-                <Textarea
-                  className="resize-none"
-                  placeholder="Yorum yaz..."
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  onKeyDown={handleCommentKeyDown}
-                  disabled={!user}
-                />
-
-                <div className="flex justify-end mt-2">
-                  <Button
-                    size="xs"
-                    onClick={() => {
-                      if (!comment.trim()) return
-                      addComment(post.id, comment)
-                      setComment("")
-                    }}
-                    disabled={!user}
-                  >
-                    Yorum yap
-                  </Button>
-                </div>
-              </div>
+              <CommentInput postId={post.id} />
 
               <div className="space-y-2 ml-10">
-                {(post.comments ?? []).map((c) => (
-                  <div
+                {post.comments.map((c) => (
+                  <CommentItem
                     key={c.id}
-                    className="flex items-start justify-between gap-3 border rounded p-4 bg-background"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <div className="font-semibold text-sm">
-                          @{c.authorName}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {formatDate(c.createdAt)}
-                        </div>
-                      </div>
-
-                      <div className="text-sm text-gray-700">
-                        {c.content}
-                      </div>
-                    </div>
-
-                    {user?.id === c.authorId && (
-                      <Button
-                        variant="destructive"
-                        size="xs"
-                        onClick={() => deleteComment(post.id, c.id)}
-                      >
-                        Yorumu Sil
-                      </Button>
-                    )}
-                  </div>
+                    postId={post.id}
+                    comment={c}
+                  />
                 ))}
               </div>
             </div>

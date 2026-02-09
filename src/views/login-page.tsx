@@ -12,45 +12,58 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        login(email, password);
+        navigate("/");
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <Card className="w-[400px]">
                 <CardHeader>
                     <CardTitle>Login</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                    <Input
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <p>Hala kayıtlı değilsen, <a
-                        className="underline" href=""
-                        onClick={() => navigate("/register")}
-                    >Kayıt ol!</a></p>
 
-                    <Button
-                        onClick={() => {
-                            login(email, password);
-                            navigate("/");
-                        }}
-                    >
-                        Login
-                    </Button>
+                {/* FORM BURADA */}
+                <form onSubmit={handleSubmit}>
+                    <CardContent className="space-y-3">
+                        <Input
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <Input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
 
-                    <Button
-                        className="ml-2 bg-red-300 hover:bg-red-500"
-                        onClick={() => navigate(-1)}
-                    >
-                        Geri Dön
-                    </Button>
-                </CardContent>
+                        <p>
+                            Hala kayıtlı değilsen,{" "}
+                            <a
+                                className="underline cursor-pointer"
+                                onClick={() => navigate("/register")}
+                            >
+                                Kayıt ol!
+                            </a>
+                        </p>
+
+                        <Button type="submit" className="w-full">
+                            Login
+                        </Button>
+
+                        <Button
+                            className="w-full bg-red-300 hover:bg-red-500"
+                            onClick={() => navigate(-1)}
+                        >
+                            Geri Dön
+                        </Button>
+                    </CardContent>
+                </form>
             </Card>
         </div>
     );

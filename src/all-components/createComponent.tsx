@@ -15,7 +15,7 @@ export const CreatePost = () => {
 
         setIsLoading(true)
 
-        // Burada gerçek backend yok, ama "loading" hissi için 600ms delay verdik
+        // "loading" hissi için 600ms delay verdik
         await new Promise((resolve) => setTimeout(resolve, 600))
 
         createPost(content)
