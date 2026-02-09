@@ -14,6 +14,7 @@ import { Button } from "../components/ui/button"
 import { Textarea } from "../components/ui/textarea"
 import { Separator } from "../components/ui/separator"
 import { Avatar, AvatarFallback } from "../components/ui/avatar"
+import { useNavigate } from "react-router-dom"
 
 type PostCardProps = {
   post: Post
@@ -33,6 +34,7 @@ const formatDate = (iso: string) => {
 export const PostCard = ({ post }: PostCardProps) => {
   const { toggleLike, deletePost, addComment, deleteComment } = usePosts()
   const { user } = useAuth()
+  const navigate = useNavigate();
 
   const [comment, setComment] = useState("")
   const [showComments, setShowComments] = useState(false)
@@ -57,7 +59,9 @@ export const PostCard = ({ post }: PostCardProps) => {
           </Avatar>
 
           <div className="flex flex-col leading-tight">
-            <CardTitle className="text-base font-semibold">
+            <CardTitle className="text-base font-semibold cursor-pointer hover:underline"
+              onClick={() => navigate(`/user/${post.authorName}`)}
+            >
               @{post.authorName}
             </CardTitle>
             <CardDescription className="text-xs">
@@ -116,7 +120,7 @@ export const PostCard = ({ post }: PostCardProps) => {
 
                 <div className="flex justify-end mt-2">
                   <Button
-                    size="xs" 
+                    size="xs"
                     onClick={() => {
                       if (!comment.trim()) return
                       addComment(post.id, comment)

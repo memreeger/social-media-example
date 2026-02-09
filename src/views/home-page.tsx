@@ -1,4 +1,3 @@
-import Navbar from "../ui-components/navbar";
 import { PostCard } from "../ui-components/post-card";
 import { CreatePost } from "../ui-components/createComponent";
 import { usePosts } from "../context/post-context";
@@ -10,7 +9,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            
+
 
             <main className="max-w-2xl mx-auto p-4 space-y-6">
                 <CreatePost />

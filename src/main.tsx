@@ -4,14 +4,13 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/auth-context.tsx'
 import { PostProvider } from './context/post-context.tsx'
-import { BrowserRouter } from "react-router-dom"
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-      <AuthProvider>
-        <PostProvider>
-          <App />
-        </PostProvider>
-      </AuthProvider>,
+    <AuthProvider>
+      <PostProvider>
+        <App />
+      </PostProvider>
+    </AuthProvider>,
   </StrictMode>
 )
