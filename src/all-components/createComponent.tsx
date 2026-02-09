@@ -15,7 +15,7 @@ export const CreatePost = () => {
 
         setIsLoading(true)
 
-        // Burada gerçek backend yok, ama "loading" hissi için 600ms delay
+        // Burada gerçek backend yok, ama "loading" hissi için 600ms delay verdik
         await new Promise((resolve) => setTimeout(resolve, 600))
 
         createPost(content)
@@ -39,14 +39,20 @@ export const CreatePost = () => {
                 onKeyDown={handleKeyDown}
                 placeholder={user ? "Ne düşünüyorsun" : "Post oluşturmak için giriş yapınız."}
                 disabled={!user || isLoading}
-            />
 
+            />
+            <div
+                className={`flex justify-end text-xs ${content.length > 180 ? "text-red-500" : "text-muted-foreground"
+                    }`}
+            >
+                {content.length} / 200
+            </div>
             <div className="flex justify-end">
                 <Button
                     variant="outline"
                     className="bg-blue-200"
                     onClick={submitPost}
-                    disabled={!user || isLoading}
+                    disabled={!user || isLoading || content.length > 200}
                 >
                     {isLoading ? "Gönderiliyor..." : "Post oluştur"}
                 </Button>

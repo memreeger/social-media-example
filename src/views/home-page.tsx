@@ -1,5 +1,5 @@
-import { PostCard } from "../ui-components/post-card";
-import { CreatePost } from "../ui-components/createComponent";
+import { PostCard } from "../all-components/post-card";
+import { CreatePost } from "../all-components/createComponent";
 import { usePosts } from "../context/post-context";
 import type { Post } from "../types/types";
 import { Button } from "../components/ui/button";

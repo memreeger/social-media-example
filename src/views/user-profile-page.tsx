@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { usePosts } from "../context/post-context"
-import { PostCard } from "../ui-components/post-card"
+import { PostCard } from "../all-components/post-card"
 
 const UserProfilePage = () => {
     const { username } = useParams()

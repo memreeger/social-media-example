@@ -30,6 +30,11 @@ export default function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <p>Hala kayıtlı değilsen, <a
+                        className="underline" href=""
+                        onClick={() => navigate("/register")}
+                    >Kayıt ol!</a></p>
+
                     <Button
                         onClick={() => {
                             login(email, password);
@@ -38,6 +43,7 @@ export default function Login() {
                     >
                         Login
                     </Button>
+
                     <Button
                         className="ml-2 bg-red-300 hover:bg-red-500"
                         onClick={() => navigate(-1)}

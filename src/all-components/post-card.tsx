@@ -73,7 +73,7 @@ export const PostCard = ({ post }: PostCardProps) => {
         {user?.id === post.authorId && (
           <Button
             variant="destructive"
-            size="sm" // <-- küçültüldü
+            size="sm"
             onClick={() => deletePost(post.id)}
           >
             Postu Sil
@@ -87,7 +87,7 @@ export const PostCard = ({ post }: PostCardProps) => {
         <div className="flex gap-2">
           <Button
             variant="outline"
-            size="sm" // <-- küçültüldü
+            size="sm" // 
             onClick={() => toggleLike(post.id)}
             disabled={!user}
           >
@@ -96,7 +96,7 @@ export const PostCard = ({ post }: PostCardProps) => {
 
           <Button
             variant="outline"
-            size="sm" // <-- küçültüldü
+            size="sm" // 
             onClick={() => setShowComments((prev) => !prev)}
           >
             💬 {post.comments.length}

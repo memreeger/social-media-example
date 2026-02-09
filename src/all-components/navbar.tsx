@@ -37,9 +37,10 @@ export default function Navbar() {
 
             </div>
 
-            <div className="flex items-center gap-2 w-full max-w-sm">
+            <div className=" flex items-center gap-2 w-full max-w-sm ">
                 <Input
                     placeholder="Kullanıcı ara..."
+                    disabled={!user}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -54,7 +55,6 @@ export default function Navbar() {
                 </Button>
             </div>
 
-            {/* RIGHT */}
             <div className="flex gap-2 items-center">
                 {!user ? (
                     <>
@@ -64,9 +64,7 @@ export default function Navbar() {
                         >
                             Login
                         </Button>
-                        <Button onClick={() => navigate("/register")}>
-                            Register
-                        </Button>
+
                     </>
                 ) : (
                     <>

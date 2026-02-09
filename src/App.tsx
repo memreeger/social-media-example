@@ -35,12 +35,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/home-page";
 import Login from "./views/login-page";
 import Register from "./views/register-page";
-import Navbar from "./ui-components/navbar";
+import Navbar from "./all-components/navbar";
 import UserProfilePage from "./views/user-profile-page";
+import ScrollToTop from "./all-components/scroll-to-top";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
